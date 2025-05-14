@@ -44,6 +44,13 @@ pipeline {
       steps {
         archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
       }
+    
+    stage('Deploy') {
+            steps {
+                sh '''
+                pkill -f spring-petclinic.jar || true
+                nohup java -jar target/spring-petclinic.jar > app.log 2>&1 &
+                '''
     }
   }
 }
