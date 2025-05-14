@@ -18,7 +18,6 @@ pipeline {
           branch: 'main',
           changelog: true,
           poll: true
-          git credentialsId: 'github-token', url: 'https://github.com/user/repo.git', branch: 'main'
         )
       }
     }
