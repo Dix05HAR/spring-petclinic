@@ -46,12 +46,12 @@ pipeline {
       }
     }
 
-    stage('Deploy') {
-      steps {
-        sh '''
-          pkill -f spring-petclinic.jar || true
-          nohup java -jar target/spring-petclinic.jar > app.log 2>&1 &
-        '''
+   stage('Deploy') {
+  steps {
+    sh '''
+      docker build -t my-petclinic-app .
+      docker run -d -p 9090:8080 --name petclinic my-petclinic-app
+    '''
       }
     }
   }
