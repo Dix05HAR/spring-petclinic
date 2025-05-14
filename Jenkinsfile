@@ -18,7 +18,7 @@ pipeline {
           branch: 'main',
           changelog: true,
           poll: true
-          credentialsId: 'github-token' // раскомментируй, если репозиторий приватный
+          git credentialsId: 'github-token', url: 'https://github.com/user/repo.git', branch: 'main'
         )
       }
     }
