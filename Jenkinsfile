@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'docker' }
 
   tools {
     maven 'Maven 3.8.6'
@@ -46,12 +46,12 @@ pipeline {
       }
     }
 
-   stage('Deploy') {
-  steps {
-    sh '''
-      docker build -t my-petclinic-app .
-      docker run -d -p 9090:8080 --name petclinic my-petclinic-app
-    '''
+    stage('Deploy') {
+      steps {
+        sh '''
+          docker build -t my-petclinic-app .
+          docker run -d -p 9090:8080 --name petclinic my-petclinic-app
+        '''
       }
     }
   }
