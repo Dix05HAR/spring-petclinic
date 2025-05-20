@@ -14,7 +14,7 @@ pipeline {
     stage('Checkout') {
       steps {
         git(
-          url: 'https://github.com/spring-projects/spring-petclinic.git',
+          url: 'https://github.com/Dix05HAR/spring-petclinic/tree/main',
           branch: 'main',
           changelog: true,
           poll: true
