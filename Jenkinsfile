@@ -47,12 +47,14 @@ pipeline {
     }
 
     stage('Deploy') {
-      steps {
-        sh '''
+       steps {
+     sh 'pwd'
+     sh 'ls -l'
+     sh '''
       docker rm -f petclinic || true
       docker build -t my-petclinic-app .
       docker run -d -p 9050:8080 --name petclinic my-petclinic-app
-       '''
+    '''
       }
     }
   }
